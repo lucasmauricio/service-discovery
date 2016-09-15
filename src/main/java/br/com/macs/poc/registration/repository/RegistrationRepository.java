@@ -108,7 +108,7 @@ public class RegistrationRepository {
 	        */
 	        while (( line = input.readLine()) != null){
 	          contents.append(line);
-	          contents.append(System.getProperty("line.separator"));
+	          contents.append(System.lineSeparator());
 	        }
 	      }
 	      finally {
