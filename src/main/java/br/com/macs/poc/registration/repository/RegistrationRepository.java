@@ -64,7 +64,7 @@ public class RegistrationRepository {
 
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			String retrievedData = readDataFile();
+			String retrievedData = readDataFromFile();
 
 			if (!retrievedData.isEmpty()) {
 				registeredAssets = mapper.readValue(retrievedData, new TypeReference<HashMap<String, AssetDto>>() {
@@ -89,7 +89,7 @@ public class RegistrationRepository {
 	}
 	
 	
-	private String readDataFile() {
+	private String readDataFromFile() {
 		logger.debug("Trying to read data from the file " + dataFile.getAbsolutePath());
 		
 	    StringBuilder contents = new StringBuilder();
@@ -120,22 +120,23 @@ public class RegistrationRepository {
 	    }
 	    
 		logger.info("Data retrieved from the file " + dataFile.getAbsolutePath());
+		
 	    return contents.toString();
 	}
 	
 	
 	
-	private void writeData(String content) {
+	private void writeDataToFile(String content) {
 		logger.debug("Trying to write data into the file: " + dataFile.getAbsolutePath());
 		FileWriter fw;
 		try {
 			fw = new FileWriter(dataFile.getAbsoluteFile());
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(content);
+	        BufferedWriter bw = new BufferedWriter(fw);
+	        bw.write(content);
+	        bw.append(System.lineSeparator());
 			bw.close();
 
 			logger.info(String.format("%d bytes of data stored into the file %s", content.length(), dataFile.getAbsolutePath()));
-//			logger.info("Data stored into the file " + dataFile.getAbsolutePath());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -156,7 +157,7 @@ public class RegistrationRepository {
 		try {
 			mapper.writeValue(sw, registeredAssets);
 
-			writeData(sw.toString());
+			writeDataToFile(sw.toString());
 		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

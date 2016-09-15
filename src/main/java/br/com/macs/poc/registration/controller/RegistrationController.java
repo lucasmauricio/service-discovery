@@ -32,7 +32,6 @@ public class RegistrationController {
 	public ResponseEntity<List<AssetDto>> getRegisteredItens() {
 		logger.info("GET	/assets -> " + registrationRepository.getAssets());
 		
-//		return new ResponseEntity<List<AssetDto>>(new ArrayList<AssetDto>(registrationRepository.getRegisteredAssets().values()), HttpStatus.OK);
 		return new ResponseEntity<List<AssetDto>>(registrationRepository.getAssets(), HttpStatus.OK);
 	}
 
