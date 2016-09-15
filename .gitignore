@@ -8,6 +8,9 @@
 # Compile output directory
 /target/
 
+# Data file
+assets-repository.json
+
 # IDE and tools files
 .classpath
 .mvn
