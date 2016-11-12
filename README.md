@@ -9,27 +9,22 @@ PoC (Proof of Concept) project to test service registration and discovery in mic
 To try this project on, we suggest to use [Docker](https://www.docker.com/what-docker).
 
 1. download de git repository
-
 ```shell
 git clone https://github.com/lucasmauricio/service-discovery.git
 ```
 2. build the Java application
-
 ```shell
 mvn clean package
 ```
 3. create the docker image
-
 ```shell
 docker build -t my_registrator .
 ```
 4. run your docker image
-
 ```shell
 docker run -d --name my_registrator -p 9000:8080 registrator
 ```
 5. just access the base URL to see data
-
 Type this URL on your web browser: http://localhost:9000/assets
 
 or
