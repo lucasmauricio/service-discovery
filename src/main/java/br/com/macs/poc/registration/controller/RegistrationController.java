@@ -2,6 +2,7 @@ package br.com.macs.poc.registration.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -50,8 +51,15 @@ public class RegistrationController {
 	}
 
 	@RequestMapping(value = "/asset/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> registerItem(@RequestBody @Valid AssetDto putAsset, @PathVariable String id) {
+	public ResponseEntity<Void> registerItem(@RequestBody @Valid AssetDto putAsset, @PathVariable String id, HttpServletRequest request) {
 		logger.info("PUT	/asset/" + id + putAsset);
+		logger.info("client address :" + request.getRemoteAddr());
+		logger.info(" and " + request.getHeader("X-FORWARDED-FOR"));
+		logger.info("client host: " + request.getRemoteHost());
+		logger.info("client port: " + request.getRemotePort());
+		logger.info("client user: " + request.getRemoteUser());
+		logger.info(" user agent: " + request.getHeader("user-agent"));
+		
 		
 		putAsset.setId(id);
 		registrationRepository.putAsset(id, putAsset);
