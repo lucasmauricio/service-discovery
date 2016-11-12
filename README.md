@@ -14,25 +14,25 @@ To try this project on, we suggest to use [Docker](https://www.docker.com/what-d
 git clone https://github.com/lucasmauricio/service-discovery.git
 ```
 
-1. build the Java application
+2. build the Java application
 
 ```shell
 mvn clean package
 ```
 
-1. create the docker image
+3. create the docker image
 
 ```shell
 docker build -t my_registrator .
 ```
 
-1. run your docker image
+4. run your docker image
 
 ```shell
 docker run -d --name my_registrator -p 9000:8080 registrator
 ```
 
-1. just access the base URL to see data
+5. just access the base URL to see data
 
 Type this URL on your web browser: http://localhost:9000/assets
 
