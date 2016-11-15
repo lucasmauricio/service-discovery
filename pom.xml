@@ -8,8 +8,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>registrador</name>
-	<description>POC project for Registrador features</description>
+	<name>registrator</name>
+	<description>POC project for Registrator features
+(Discovery will be featured soon)</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
